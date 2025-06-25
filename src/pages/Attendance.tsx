@@ -13,6 +13,8 @@ interface LectureBlock {
 
 const Attendance = () => {
   const [selectedBatch, setSelectedBatch] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDay, setSelectedDay] = useState('');
   const [showAddClass, setShowAddClass] = useState(false);
   const [newClass, setNewClass] = useState({ subject: '', time: '', day: '' });
 
@@ -105,10 +107,17 @@ const Attendance = () => {
     );
   }
 
-  const groupedTimetable = days.reduce((acc, day) => {
-    acc[day] = timetable.filter(lecture => lecture.day === day);
-    return acc;
-  }, {} as Record<string, LectureBlock[]>);
+  // Filter timetable based on selected day if one is selected
+  const filteredTimetable = selectedDay 
+    ? timetable.filter(lecture => lecture.day === selectedDay)
+    : timetable;
+
+  const groupedTimetable = selectedDay 
+    ? { [selectedDay]: filteredTimetable }
+    : days.reduce((acc, day) => {
+        acc[day] = timetable.filter(lecture => lecture.day === day);
+        return acc;
+      }, {} as Record<string, LectureBlock[]>);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -139,8 +148,60 @@ const Attendance = () => {
           </div>
         </div>
 
+        {/* Date and Day Selection */}
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 mb-8">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Select Date & Day for Attendance</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Date</label>
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Day</label>
+              <select
+                value={selectedDay}
+                onChange={(e) => setSelectedDay(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              >
+                <option value="">All Days</option>
+                {days.map(day => (
+                  <option key={day} value={day}>{day}</option>
+                ))}
+              </select>
+            </div>
+            
+            <div className="flex items-end">
+              <button
+                onClick={() => {
+                  setSelectedDate('');
+                  setSelectedDay('');
+                }}
+                className="w-full px-4 py-2 text-gray-600 dark:text-gray-400 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                Reset Filters
+              </button>
+            </div>
+          </div>
+          
+          {(selectedDate || selectedDay) && (
+            <div className="mt-4 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
+              <p className="text-purple-700 dark:text-purple-300 font-medium">
+                {selectedDate && `Date: ${new Date(selectedDate).toLocaleDateString()}`}
+                {selectedDate && selectedDay && ' | '}
+                {selectedDay && `Day: ${selectedDay}`}
+              </p>
+            </div>
+          )}
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {days.map(day => (
+          {Object.keys(groupedTimetable).map(day => (
             <div key={day} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="p-4 border-b border-gray-100 dark:border-gray-700">
                 <h3 className="font-semibold text-gray-900 dark:text-white">{day}</h3>

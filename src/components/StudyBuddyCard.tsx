@@ -20,22 +20,22 @@ interface StudyBuddyCardProps {
 const StudyBuddyCard = ({ buddy, onConnect }: StudyBuddyCardProps) => {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Solo Focus': return 'bg-red-100 text-red-700 border-red-200';
-      case 'Open to Study': return 'bg-green-100 text-green-700 border-green-200';
-      case 'Need Help': return 'bg-blue-100 text-blue-700 border-blue-200';
-      default: return 'bg-gray-100 text-gray-700 border-gray-200';
+      case 'Solo Focus': return 'bg-red-100 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800';
+      case 'Open to Study': return 'bg-green-100 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800';
+      case 'Need Help': return 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800';
+      default: return 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600';
     }
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
       <div className="flex items-center space-x-3 mb-3">
         <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full flex items-center justify-center">
           <span className="text-white font-semibold text-sm">{buddy.name.split(' ').map(n => n[0]).join('')}</span>
         </div>
         <div className="flex-1">
-          <h4 className="font-medium text-gray-900">{buddy.name}</h4>
-          <p className="text-sm text-gray-600">{buddy.subject}</p>
+          <h4 className="font-medium text-gray-900 dark:text-white">{buddy.name}</h4>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{buddy.subject}</p>
         </div>
       </div>
       
@@ -44,11 +44,11 @@ const StudyBuddyCard = ({ buddy, onConnect }: StudyBuddyCardProps) => {
       </div>
       
       <div className="space-y-2 mb-4">
-        <div className="flex items-center text-sm text-gray-600">
+        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
           <MapPin className="w-4 h-4 mr-2" />
           {buddy.location}
         </div>
-        <div className="flex items-center text-sm text-gray-600">
+        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
           <Clock className="w-4 h-4 mr-2" />
           {buddy.timeRemaining}
         </div>
