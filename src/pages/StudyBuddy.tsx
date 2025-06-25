@@ -12,57 +12,57 @@ const StudyBuddy = () => {
   const studyBuddies = [
     {
       id: '1',
-      name: 'Alex Johnson',
+      name: 'Student A',
       status: 'Open to Study' as const,
       subject: 'Mathematics',
       location: 'Library - 2nd Floor',
       timeRemaining: '2 hours left',
-      avatar: 'AJ'
+      avatar: 'SA'
     },
     {
       id: '2',
-      name: 'Sarah Chen',
+      name: 'Student B',
       status: 'Need Help' as const,
       subject: 'Physics',
       location: 'Study Room A',
       timeRemaining: '1 hour left',
-      avatar: 'SC'
+      avatar: 'SB'
     },
     {
       id: '3',
-      name: 'Mike Wilson',
+      name: 'Student C',
       status: 'Solo Focus' as const,
       subject: 'Chemistry',
       location: 'Common Area',
       timeRemaining: '3 hours left',
-      avatar: 'MW'
+      avatar: 'SC'
     },
     {
       id: '4',
-      name: 'Emma Lee',
+      name: 'Student D',
       status: 'Open to Study' as const,
       subject: 'Computer Science',
       location: 'Library - 1st Floor',
       timeRemaining: '4 hours left',
-      avatar: 'EL'
+      avatar: 'SD'
     },
     {
       id: '5',
-      name: 'James Brown',
+      name: 'Student E',
       status: 'Need Help' as const,
       subject: 'Mathematics',
       location: 'Study Room B',
       timeRemaining: '1.5 hours left',
-      avatar: 'JB'
+      avatar: 'SE'
     },
     {
       id: '6',
-      name: 'Lisa Wang',
+      name: 'Student F',
       status: 'Open to Study' as const,
       subject: 'Biology',
       location: 'Lab - 3rd Floor',
       timeRemaining: '2.5 hours left',
-      avatar: 'LW'
+      avatar: 'SF'
     }
   ];
 
@@ -89,21 +89,21 @@ const StudyBuddy = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Navigation currentPath="/study-buddy" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             Study <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Buddy</span> Finder
           </h1>
-          <p className="text-gray-600">Connect with peers for collaborative learning</p>
+          <p className="text-gray-600 dark:text-gray-400">Connect with peers for collaborative learning</p>
         </div>
 
         {/* Your Status */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Your Current Status</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 mb-8">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Your Current Status</h2>
           <div className="flex flex-wrap gap-3">
             {(['Solo Focus', 'Open to Study', 'Need Help'] as const).map((status) => (
               <button
@@ -112,7 +112,7 @@ const StudyBuddy = () => {
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all ${
                   currentStatus === status
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
                 <div className={`w-3 h-3 rounded-full ${getStatusColor(status)}`}></div>
@@ -122,21 +122,21 @@ const StudyBuddy = () => {
           </div>
           
           {currentStatus !== 'Solo Focus' && (
-            <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-              <p className="text-green-700 font-medium">You're visible to other study buddies!</p>
-              <p className="text-green-600 text-sm mt-1">Others can now connect with you for study sessions.</p>
+            <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+              <p className="text-green-700 dark:text-green-300 font-medium">You're visible to other study buddies!</p>
+              <p className="text-green-600 dark:text-green-400 text-sm mt-1">Others can now connect with you for study sessions.</p>
             </div>
           )}
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Find Study Buddies</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 mb-8">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Find Study Buddies</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <select
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               {locations.map(location => (
                 <option key={location} value={location}>
@@ -148,7 +148,7 @@ const StudyBuddy = () => {
             <select
               value={selectedSubject}
               onChange={(e) => setSelectedSubject(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
             >
               {subjects.map(subject => (
                 <option key={subject} value={subject}>
@@ -173,8 +173,8 @@ const StudyBuddy = () => {
         {filteredBuddies.length === 0 && (
           <div className="text-center py-12">
             <Users className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-500 text-lg">No study buddies found</p>
-            <p className="text-gray-400 mt-2">Try adjusting your filters or check back later</p>
+            <p className="text-gray-500 dark:text-gray-400 text-lg">No study buddies found</p>
+            <p className="text-gray-400 dark:text-gray-500 mt-2">Try adjusting your filters or check back later</p>
           </div>
         )}
 
