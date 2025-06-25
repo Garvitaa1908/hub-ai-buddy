@@ -8,6 +8,9 @@ const StudyBuddy = () => {
   const [currentStatus, setCurrentStatus] = useState<'Solo Focus' | 'Open to Study' | 'Need Help'>('Open to Study');
   const [selectedLocation, setSelectedLocation] = useState('all');
   const [selectedSubject, setSelectedSubject] = useState('all');
+  const [selectedYear, setSelectedYear] = useState('all');
+  const [selectedGender, setSelectedGender] = useState('all');
+  const [currentLocationFilter, setCurrentLocationFilter] = useState('all');
 
   const studyBuddies = [
     {
@@ -17,7 +20,9 @@ const StudyBuddy = () => {
       subject: 'Mathematics',
       location: 'Library - 2nd Floor',
       timeRemaining: '2 hours left',
-      avatar: 'SA'
+      avatar: 'SA',
+      year: '2nd Year',
+      gender: 'Male'
     },
     {
       id: '2',
@@ -26,7 +31,9 @@ const StudyBuddy = () => {
       subject: 'Physics',
       location: 'Study Room A',
       timeRemaining: '1 hour left',
-      avatar: 'SB'
+      avatar: 'SB',
+      year: '3rd Year',
+      gender: 'Female'
     },
     {
       id: '3',
@@ -35,7 +42,9 @@ const StudyBuddy = () => {
       subject: 'Chemistry',
       location: 'Common Area',
       timeRemaining: '3 hours left',
-      avatar: 'SC'
+      avatar: 'SC',
+      year: '1st Year',
+      gender: 'Male'
     },
     {
       id: '4',
@@ -44,7 +53,9 @@ const StudyBuddy = () => {
       subject: 'Computer Science',
       location: 'Library - 1st Floor',
       timeRemaining: '4 hours left',
-      avatar: 'SD'
+      avatar: 'SD',
+      year: '4th Year',
+      gender: 'Female'
     },
     {
       id: '5',
@@ -53,7 +64,9 @@ const StudyBuddy = () => {
       subject: 'Mathematics',
       location: 'Study Room B',
       timeRemaining: '1.5 hours left',
-      avatar: 'SE'
+      avatar: 'SE',
+      year: '2nd Year',
+      gender: 'Prefer not to say'
     },
     {
       id: '6',
@@ -62,17 +75,24 @@ const StudyBuddy = () => {
       subject: 'Biology',
       location: 'Lab - 3rd Floor',
       timeRemaining: '2.5 hours left',
-      avatar: 'SF'
+      avatar: 'SF',
+      year: '3rd Year',
+      gender: 'Male'
     }
   ];
 
   const locations = ['all', 'Library - 1st Floor', 'Library - 2nd Floor', 'Study Room A', 'Study Room B', 'Common Area', 'Lab - 3rd Floor'];
   const subjects = ['all', 'Mathematics', 'Physics', 'Chemistry', 'Computer Science', 'Biology'];
+  const years = ['all', '1st Year', '2nd Year', '3rd Year', '4th Year'];
+  const genders = ['all', 'Male', 'Female', 'Prefer not to say'];
 
   const filteredBuddies = studyBuddies.filter(buddy => {
     const matchesLocation = selectedLocation === 'all' || buddy.location === selectedLocation;
     const matchesSubject = selectedSubject === 'all' || buddy.subject === selectedSubject;
-    return matchesLocation && matchesSubject;
+    const matchesYear = selectedYear === 'all' || buddy.year === selectedYear;
+    const matchesGender = selectedGender === 'all' || buddy.gender === selectedGender;
+    const matchesCurrentLocation = currentLocationFilter === 'all' || buddy.location.toLowerCase().includes(currentLocationFilter.toLowerCase());
+    return matchesLocation && matchesSubject && matchesYear && matchesGender && matchesCurrentLocation;
   });
 
   const handleConnectStudyBuddy = (id: string) => {
@@ -86,6 +106,14 @@ const StudyBuddy = () => {
       case 'Need Help': return 'bg-blue-500';
       default: return 'bg-gray-500';
     }
+  };
+
+  const clearAllFilters = () => {
+    setSelectedLocation('all');
+    setSelectedSubject('all');  
+    setSelectedYear('all');
+    setSelectedGender('all');
+    setCurrentLocationFilter('all');
   };
 
   return (
@@ -129,34 +157,126 @@ const StudyBuddy = () => {
           )}
         </div>
 
-        {/* Filters */}
+        {/* Enhanced Filters */}
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Find Study Buddies</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <select
-              value={selectedLocation}
-              onChange={(e) => setSelectedLocation(e.target.value)}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
+              <Filter className="w-5 h-5 mr-2" />
+              Find Study Buddies
+            </h3>
+            <button
+              onClick={clearAllFilters}
+              className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium"
             >
-              {locations.map(location => (
-                <option key={location} value={location}>
-                  {location === 'all' ? 'All Locations' : location}
-                </option>
-              ))}
-            </select>
-            
-            <select
-              value={selectedSubject}
-              onChange={(e) => setSelectedSubject(e.target.value)}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-            >
-              {subjects.map(subject => (
-                <option key={subject} value={subject}>
-                  {subject === 'all' ? 'All Subjects' : subject}
-                </option>
-              ))}
-            </select>
+              Clear All Filters
+            </button>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Location</label>
+              <select
+                value={selectedLocation}
+                onChange={(e) => setSelectedLocation(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              >
+                {locations.map(location => (
+                  <option key={location} value={location}>
+                    {location === 'all' ? 'All Locations' : location}
+                  </option>
+                ))}
+              </select>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+              <select
+                value={selectedSubject}
+                onChange={(e) => setSelectedSubject(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              >
+                {subjects.map(subject => (
+                  <option key={subject} value={subject}>
+                    {subject === 'all' ? 'All Subjects' : subject}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Year of Study</label>
+              <select
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              >
+                {years.map(year => (
+                  <option key={year} value={year}>
+                    {year === 'all' ? 'All Years' : year}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Current Location</label>
+              <input
+                type="text"
+                value={currentLocationFilter === 'all' ? '' : currentLocationFilter}
+                onChange={(e) => setCurrentLocationFilter(e.target.value || 'all')}
+                placeholder="Search by current location..."
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Gender</label>
+              <select
+                value={selectedGender}
+                onChange={(e) => setSelectedGender(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              >
+                {genders.map(gender => (
+                  <option key={gender} value={gender}>
+                    {gender === 'all' ? 'All Genders' : gender}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Active Filters Display */}
+          {(selectedLocation !== 'all' || selectedSubject !== 'all' || selectedYear !== 'all' || selectedGender !== 'all' || currentLocationFilter !== 'all') && (
+            <div className="mt-4 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
+              <p className="text-purple-700 dark:text-purple-300 font-medium mb-2">Active Filters:</p>
+              <div className="flex flex-wrap gap-2">
+                {selectedLocation !== 'all' && (
+                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-300 rounded text-sm">
+                    Location: {selectedLocation}
+                  </span>
+                )}
+                {selectedSubject !== 'all' && (
+                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-300 rounded text-sm">
+                    Subject: {selectedSubject}
+                  </span>
+                )}
+                {selectedYear !== 'all' && (
+                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-300 rounded text-sm">
+                    Year: {selectedYear}
+                  </span>
+                )}
+                {selectedGender !== 'all' && (
+                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-300 rounded text-sm">
+                    Gender: {selectedGender}
+                  </span>
+                )}
+                {currentLocationFilter !== 'all' && (
+                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-300 rounded text-sm">
+                    Current Location: {currentLocationFilter}
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Study Buddies Grid */}
