@@ -1,24 +1,750 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hub-ai-buddy</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HostelHub+</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo">H+</div>
+                <span class="brand-text">HostelHub+</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                    <span class="nav-icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#resources" class="nav-link" data-page="resources">
+                    <span class="nav-icon">📚</span>
+                    <span>Resources</span>
+                </a>
+                <a href="#study-buddy" class="nav-link" data-page="study-buddy">
+                    <span class="nav-icon">👥</span>
+                    <span>Study Buddy</span>
+                </a>
+                <a href="#attendance" class="nav-link" data-page="attendance">
+                    <span class="nav-icon">📅</span>
+                    <span>Attendance</span>
+                </a>
+            </div>
 
-    <meta property="og:title" content="hub-ai-buddy" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="notification-btn">
+                    <span class="notification-icon">🔔</span>
+                    <span class="notification-badge"></span>
+                </button>
+                <button class="user-btn" id="userBtn">
+                    <span class="user-icon">👤</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Welcome back to <span class="gradient-text">HostelHub+</span></h1>
+                    <p>Your academic companion for a smarter college life</p>
+                </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <div class="stats-content">
+                            <h3>Total Subjects</h3>
+                            <div class="stats-value">6</div>
+                        </div>
+                        <div class="stats-icon purple">📚</div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-content">
+                            <h3>Study Sessions</h3>
+                            <div class="stats-value">12</div>
+                            <div class="stats-change">+3 this week</div>
+                        </div>
+                        <div class="stats-icon blue">👥</div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-content">
+                            <h3>Avg Attendance</h3>
+                            <div class="stats-value">82%</div>
+                            <div class="stats-change">+5% from last month</div>
+                        </div>
+                        <div class="stats-icon green">📅</div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-content">
+                            <h3>Resources Shared</h3>
+                            <div class="stats-value">24</div>
+                            <div class="stats-change">+8 this week</div>
+                        </div>
+                        <div class="stats-icon orange">📈</div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-main">
+                        <h2>Attendance Overview</h2>
+                        <div class="attendance-grid">
+                            <div class="attendance-card">
+                                <div class="attendance-header">
+                                    <h3>Mathematics</h3>
+                                    <span class="status-icon good">✅</span>
+                                </div>
+                                <div class="attendance-details">
+                                    <div class="attendance-percentage good">85%</div>
+                                    <div class="attendance-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="attendance-info">
+                                        <span>34/40 classes</span>
+                                        <span>Next: Mon 9:00 AM</span>
+                                    </div>
+                                    <div class="attendance-tip">
+                                        <p>✨ AI Says: Safe to bunk!</p>
+                                        <small>You can miss 1-2 classes and still maintain 75%</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="attendance-card">
+                                <div class="attendance-header">
+                                    <h3>Physics</h3>
+                                    <span class="status-icon warning">⚠️</span>
+                                </div>
+                                <div class="attendance-details">
+                                    <div class="attendance-percentage warning">72%</div>
+                                    <div class="attendance-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill warning" style="width: 72%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="attendance-info">
+                                        <span>25/35 classes</span>
+                                        <span>Next: Tue 11:00 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="attendance-card">
+                                <div class="attendance-header">
+                                    <h3>Chemistry</h3>
+                                    <span class="status-icon good">✅</span>
+                                </div>
+                                <div class="attendance-details">
+                                    <div class="attendance-percentage good">90%</div>
+                                    <div class="attendance-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="attendance-info">
+                                        <span>29/32 classes</span>
+                                        <span>Next: Wed 2:00 PM</span>
+                                    </div>
+                                    <div class="attendance-tip">
+                                        <p>✨ AI Says: Safe to bunk!</p>
+                                        <small>You can miss 1-2 classes and still maintain 75%</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-sidebar">
+                        <div class="activity-card">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">📄</div>
+                                    <div class="activity-content">
+                                        <h4>Data Structures Notes</h4>
+                                        <p>Sarah uploaded new notes for Trees and Graphs</p>
+                                        <small>2 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">💬</div>
+                                    <div class="activity-content">
+                                        <h4>Operating Systems Help</h4>
+                                        <p>Alex asked about process synchronization</p>
+                                        <small>4 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">👥</div>
+                                    <div class="activity-content">
+                                        <h4>Study Session</h4>
+                                        <p>You joined a group study for Mathematics</p>
+                                        <small>6 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">🏆</div>
+                                    <div class="activity-content">
+                                        <h4>Level Up!</h4>
+                                        <p>You reached Level 5 and earned 50 XP</p>
+                                        <small>1 day ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Page -->
+        <div id="resources-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <div>
+                        <h1>Academic <span class="gradient-text">Resources</span></h1>
+                        <p>Share and discover study materials</p>
+                    </div>
+                    <button class="btn-primary" id="shareResourceBtn">
+                        <span>+</span> Share Resource
+                    </button>
+                </div>
+
+                <div class="filters-card">
+                    <div class="filters-grid">
+                        <div class="search-box">
+                            <input type="text" id="resourceSearch" placeholder="Search resources...">
+                        </div>
+                        <select id="subjectFilter">
+                            <option value="all">All Subjects</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Computer Science">Computer Science</option>
+                        </select>
+                        <select id="typeFilter">
+                            <option value="all">All Types</option>
+                            <option value="Notes">Notes</option>
+                            <option value="Previous Papers">Previous Papers</option>
+                            <option value="Assignments">Assignments</option>
+                            <option value="Books">Books</option>
+                        </select>
+                        <div class="filter-info">
+                            <span>🔍</span>
+                            <span id="resourceCount">4 resources found</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resources-grid" id="resourcesGrid">
+                    <div class="resource-card" data-subject="Mathematics" data-type="Notes">
+                        <div class="resource-header">
+                            <div>
+                                <h3>Calculus Chapter 1-3 Notes</h3>
+                                <div class="resource-tags">
+                                    <span class="tag purple">Mathematics</span>
+                                    <span class="tag blue">Notes</span>
+                                </div>
+                            </div>
+                            <div class="resource-icon">📄</div>
+                        </div>
+                        <p>Comprehensive notes covering limits, derivatives, and basic integration</p>
+                        <div class="resource-meta">
+                            <span>👤 Anonymous</span>
+                            <span>📅 2 days ago</span>
+                        </div>
+                        <button class="resource-link">
+                            <span>🔗</span> Open in Drive
+                        </button>
+                    </div>
+                    <div class="resource-card" data-subject="Physics" data-type="Previous Papers">
+                        <div class="resource-header">
+                            <div>
+                                <h3>Physics Mid-term 2023</h3>
+                                <div class="resource-tags">
+                                    <span class="tag purple">Physics</span>
+                                    <span class="tag blue">Previous Papers</span>
+                                </div>
+                            </div>
+                            <div class="resource-icon">📄</div>
+                        </div>
+                        <p>Previous year question paper with solutions</p>
+                        <div class="resource-meta">
+                            <span>👤 Anonymous</span>
+                            <span>📅 1 week ago</span>
+                        </div>
+                        <button class="resource-link">
+                            <span>🔗</span> Open in Drive
+                        </button>
+                    </div>
+                    <div class="resource-card" data-subject="Chemistry" data-type="Notes">
+                        <div class="resource-header">
+                            <div>
+                                <h3>Organic Chemistry Reactions</h3>
+                                <div class="resource-tags">
+                                    <span class="tag purple">Chemistry</span>
+                                    <span class="tag blue">Notes</span>
+                                </div>
+                            </div>
+                            <div class="resource-icon">📄</div>
+                        </div>
+                        <p>Important organic reactions with mechanisms</p>
+                        <div class="resource-meta">
+                            <span>👤 Anonymous</span>
+                            <span>📅 3 days ago</span>
+                        </div>
+                        <button class="resource-link">
+                            <span>🔗</span> Open in Drive
+                        </button>
+                    </div>
+                    <div class="resource-card" data-subject="Computer Science" data-type="Assignments">
+                        <div class="resource-header">
+                            <div>
+                                <h3>Data Structures Implementation</h3>
+                                <div class="resource-tags">
+                                    <span class="tag purple">Computer Science</span>
+                                    <span class="tag blue">Assignments</span>
+                                </div>
+                            </div>
+                            <div class="resource-icon">📄</div>
+                        </div>
+                        <p>Complete implementation of basic data structures in C++</p>
+                        <div class="resource-meta">
+                            <span>👤 Anonymous</span>
+                            <span>📅 5 days ago</span>
+                        </div>
+                        <button class="resource-link">
+                            <span>🔗</span> Open in Drive
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Study Buddy Page -->
+        <div id="study-buddy-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <div>
+                        <h1>Study <span class="gradient-text">Buddy</span> Finder</h1>
+                        <p>Connect with peers for collaborative learning</p>
+                    </div>
+                </div>
+
+                <div class="status-card">
+                    <h2>Your Current Status</h2>
+                    <div class="status-buttons">
+                        <button class="status-btn active" data-status="Open to Study">
+                            <div class="status-dot green"></div>
+                            Open to Study
+                        </button>
+                        <button class="status-btn" data-status="Solo Focus">
+                            <div class="status-dot red"></div>
+                            Solo Focus
+                        </button>
+                        <button class="status-btn" data-status="Need Help">
+                            <div class="status-dot blue"></div>
+                            Need Help
+                        </button>
+                    </div>
+                    <div class="status-info">
+                        <p>✅ You're visible to other study buddies!</p>
+                        <small>Others can now connect with you for study sessions.</small>
+                    </div>
+                </div>
+
+                <div class="filters-card">
+                    <div class="filter-header">
+                        <h3>🔍 Find Study Buddies</h3>
+                        <button id="clearFilters">Clear All Filters</button>
+                    </div>
+                    <div class="buddy-filters">
+                        <select id="locationFilter">
+                            <option value="all">All Locations</option>
+                            <option value="Library - 1st Floor">Library - 1st Floor</option>
+                            <option value="Library - 2nd Floor">Library - 2nd Floor</option>
+                            <option value="Study Room A">Study Room A</option>
+                            <option value="Study Room B">Study Room B</option>
+                            <option value="Common Area">Common Area</option>
+                        </select>
+                        <select id="buddySubjectFilter">
+                            <option value="all">All Subjects</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Biology">Biology</option>
+                        </select>
+                        <select id="yearFilter">
+                            <option value="all">All Years</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </select>
+                        <select id="genderFilter">
+                            <option value="all">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                        <input type="text" id="currentLocationFilter" placeholder="Search by current location...">
+                    </div>
+                </div>
+
+                <div class="buddy-grid" id="buddyGrid">
+                    <div class="buddy-card" data-location="Library - 2nd Floor" data-subject="Mathematics" data-year="2nd Year" data-gender="Male">
+                        <div class="buddy-header">
+                            <div class="buddy-avatar">SA</div>
+                            <div class="buddy-info">
+                                <h3>Student A</h3>
+                                <p>Mathematics</p>
+                                <small>2nd Year</small>
+                            </div>
+                        </div>
+                        <div class="buddy-status open">Open to Study</div>
+                        <div class="buddy-details">
+                            <div class="buddy-detail">
+                                <span>📍</span> Library - 2nd Floor
+                            </div>
+                            <div class="buddy-detail">
+                                <span>⏰</span> 2 hours left
+                            </div>
+                        </div>
+                        <button class="connect-btn">
+                            <span>💬</span> Connect
+                        </button>
+                    </div>
+                    <div class="buddy-card" data-location="Study Room A" data-subject="Physics" data-year="3rd Year" data-gender="Female">
+                        <div class="buddy-header">
+                            <div class="buddy-avatar">SB</div>
+                            <div class="buddy-info">
+                                <h3>Student B</h3>
+                                <p>Physics</p>
+                                <small>3rd Year</small>
+                            </div>
+                        </div>
+                        <div class="buddy-status help">Need Help</div>
+                        <div class="buddy-details">
+                            <div class="buddy-detail">
+                                <span>📍</span> Study Room A
+                            </div>
+                            <div class="buddy-detail">
+                                <span>⏰</span> 1 hour left
+                            </div>
+                        </div>
+                        <button class="connect-btn">
+                            <span>💬</span> Connect
+                        </button>
+                    </div>
+                    <div class="buddy-card" data-location="Common Area" data-subject="Chemistry" data-year="1st Year" data-gender="Male">
+                        <div class="buddy-header">
+                            <div class="buddy-avatar">SC</div>
+                            <div class="buddy-info">
+                                <h3>Student C</h3>
+                                <p>Chemistry</p>
+                                <small>1st Year</small>
+                            </div>
+                        </div>
+                        <div class="buddy-status solo">Solo Focus</div>
+                        <div class="buddy-details">
+                            <div class="buddy-detail">
+                                <span>📍</span> Common Area
+                            </div>
+                            <div class="buddy-detail">
+                                <span>⏰</span> 3 hours left
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Page -->
+        <div id="attendance-page" class="page">
+            <div class="container">
+                <div class="batch-selection" id="batchSelection">
+                    <div class="selection-content">
+                        <div class="selection-icon">📅</div>
+                        <h1>Attendance <span class="gradient-text">Tracker</span></h1>
+                        <p>Select your batch to view your timetable</p>
+                        <div class="batch-form">
+                            <h2>Select Your Batch</h2>
+                            <select id="batchSelect">
+                                <option value="">Choose your batch</option>
+                                <option value="CSE-A 2023">CSE-A 2023</option>
+                                <option value="CSE-B 2023">CSE-B 2023</option>
+                                <option value="ECE-A 2023">ECE-A 2023</option>
+                                <option value="ECE-B 2023">ECE-B 2023</option>
+                                <option value="ME-A 2023">ME-A 2023</option>
+                                <option value="ME-B 2023">ME-B 2023</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attendance-content" id="attendanceContent" style="display: none;">
+                    <div class="page-header">
+                        <div>
+                            <h1>Weekly <span class="gradient-text">Timetable</span></h1>
+                            <p id="selectedBatchText">Batch: </p>
+                        </div>
+                        <div class="header-actions">
+                            <button id="changeBatchBtn" class="btn-secondary">Change Batch</button>
+                            <button id="addClassBtn" class="btn-primary">
+                                <span>+</span> Add Class
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="date-selection-card">
+                        <h3>Select Date & Day for Attendance</h3>
+                        <div class="date-filters">
+                            <div class="filter-group">
+                                <label>Select Date</label>
+                                <input type="date" id="attendanceDate">
+                            </div>
+                            <div class="filter-group">
+                                <label>Select Day</label>
+                                <select id="attendanceDay">
+                                    <option value="">All Days</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <button id="resetFilters" class="btn-secondary">Reset Filters</button>
+                            </div>
+                        </div>
+                        <div id="activeFilters" class="active-filters" style="display: none;">
+                            <p>Active Filters:</p>
+                            <div id="filterTags"></div>
+                        </div>
+                    </div>
+
+                    <div class="timetable-grid" id="timetableGrid">
+                        <div class="day-column" data-day="Monday">
+                            <div class="day-header">Monday</div>
+                            <div class="day-classes">
+                                <div class="class-item" data-subject="Mathematics" data-time="9:00 AM">
+                                    <div class="class-header">
+                                        <h4>Mathematics</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>9:00 AM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                                <div class="class-item" data-subject="Physics" data-time="11:00 AM">
+                                    <div class="class-header">
+                                        <h4>Physics</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>11:00 AM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                                <div class="class-item" data-subject="Chemistry" data-time="2:00 PM">
+                                    <div class="class-header">
+                                        <h4>Chemistry</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>2:00 PM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-column" data-day="Tuesday">
+                            <div class="day-header">Tuesday</div>
+                            <div class="day-classes">
+                                <div class="class-item" data-subject="Computer Science" data-time="9:00 AM">
+                                    <div class="class-header">
+                                        <h4>Computer Science</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>9:00 AM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                                <div class="class-item" data-subject="Mathematics" data-time="11:00 AM">
+                                    <div class="class-header">
+                                        <h4>Mathematics</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>11:00 AM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                                <div class="class-item" data-subject="English" data-time="2:00 PM">
+                                    <div class="class-header">
+                                        <h4>English</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>2:00 PM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-column" data-day="Wednesday">
+                            <div class="day-header">Wednesday</div>
+                            <div class="day-classes">
+                                <div class="class-item" data-subject="Physics" data-time="9:00 AM">
+                                    <div class="class-header">
+                                        <h4>Physics</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>9:00 AM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                                <div class="class-item" data-subject="Chemistry" data-time="11:00 AM">
+                                    <div class="class-header">
+                                        <h4>Chemistry</h4>
+                                        <span class="status-icon">⏰</span>
+                                    </div>
+                                    <p>11:00 AM</p>
+                                    <div class="attendance-options">
+                                        <button class="att-btn attending" data-status="attending">Attending</button>
+                                        <button class="att-btn missed" data-status="missed">Missed</button>
+                                        <button class="att-btn cancelled" data-status="cancelled">Cancelled</button>
+                                        <button class="att-btn proxy" data-status="proxy">Proxy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-column" data-day="Thursday">
+                            <div class="day-header">Thursday</div>
+                            <div class="day-classes">
+                                <p class="no-classes">No classes scheduled</p>
+                            </div>
+                        </div>
+                        <div class="day-column" data-day="Friday">
+                            <div class="day-header">Friday</div>
+                            <div class="day-classes">
+                                <p class="no-classes">No classes scheduled</p>
+                            </div>
+                        </div>
+                        <div class="day-column" data-day="Saturday">
+                            <div class="day-header">Saturday</div>
+                            <div class="day-classes">
+                                <p class="no-classes">No classes scheduled</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="resourceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Share Resource</h2>
+            <form id="resourceForm">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="resourceTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <select id="resourceSubject" required>
+                        <option value="">Select subject</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Computer Science">Computer Science</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select id="resourceType" required>
+                        <option value="">Select type</option>
+                        <option value="Notes">Notes</option>
+                        <option value="Previous Papers">Previous Papers</option>
+                        <option value="Assignments">Assignments</option>
+                        <option value="Books">Books</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Google Drive Link</label>
+                    <input type="url" id="resourceLink" required placeholder="https://drive.google.com/file/d/...">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="resourceDescription" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelResource">Cancel</button>
+                    <button type="submit" class="btn-primary">Share</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
